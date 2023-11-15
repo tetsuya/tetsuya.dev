@@ -1,5 +1,11 @@
 ---
+import { getCollection } from 'astro:content';
+import Card from '../components/Card.astro';
 import NavBar from '../components/NavBar.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => b.data.year.valueOf() - a.data.year.valueOf()
+);
 ---
 
 <!doctype html>
@@ -13,6 +19,21 @@ import NavBar from '../components/NavBar.astro';
   </head>
   <body>
     <NavBar />
-    <h1>Astro</h1>
+    <main class="h-screen bg-neutral-800">
+      <div class="max-w-lg mx-auto p-6">
+        <section class="flex flex-col space-y-4">
+          {projects.map(project => (
+            <h3 class="text-md font-semibold text-neutral-400">{project.data.year}</h3>
+            <Card
+              description={project.data.description}
+              emoji={project.data.emoji}
+              isArchived={project.data.isArchived}
+              link={project.data.link}
+              title={project.data.title}
+            />
+          ))}
+        </section>
+      </div>
+    </main>
   </body>
 </html>
