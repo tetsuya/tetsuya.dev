@@ -16,5 +16,6 @@
     "astro": "^3.5.4",
     "tailwindcss": "^3.0.24",
     "typescript": "^5.2.2"
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }
