@@ -12,18 +12,18 @@ const { emoji, title, description, link, isArchived } = Astro.props;
 
 <div class:list={[{ "opacity-50": isArchived }]}>
   <a href={link} class="flex p-4 bg-neutral-900 rounded-xl">
-    <div class="flex flex-shrink-0 items-center justify-center text-4xl w-16 h-16 rounded-full bg-neutral-800">
+    <div
+      class="flex flex-shrink-0 items-center justify-center text-4xl w-16 h-16 rounded-full bg-neutral-800 mr-4"
+    >
       {emoji}
     </div>
-    <div class="pl-6 w-full">
+    <div class="flex flex-col items-start justify-center w-full">
       <h2 class="text-neutral-200 text-lg">
         {title}
       </h2>
-      <div class="pt-1">
-        <p class="text-sm text-neutral-200">
-          {description}
-        </p>
-      </div>
+      <p class="text-xs text-neutral-200">
+        {description}
+      </p>
     </div>
   </a>
 </div>
